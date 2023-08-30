@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link href="{{ asset('css/import.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block title %}Import users{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Import users</h1>
+    {% if app.user %}
+      <div class="info">
+        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+      </div>
+    {% endif %}
+    <div class="alert-danger">
+      {{ errors }}
+    </div>
+
+    {{ form_errors(importForm) }}
+
+    {{ form_start(importForm) }}
+        {{ form_row(importForm.csv, {
+            label: 'File'
+        }) }}
+
+        <button type="submit" class="btn">Import users</button>
+    {{ form_end(importForm) }}
+  </div>
+{% endblock %}

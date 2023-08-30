@@ -1,0 +1,42 @@
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 4px solid #fdb44b;
+    border-radius: 10px;
+    color: #fdb44b
+}
+
+label {
+    margin: 10px 0;
+}
+
+input {
+    height: 20px;
+}
+
+button {
+    background-color: transparent;
+    margin-top: 20px;
+    width: 100%;
+    height: 30px;
+    border: 2px solid #fdb44b;
+    color: #fdb44b;
+    cursor: pointer;
+    border-radius: 5px;;
+}
+
+button:hover {
+    color: white;
+    background-color: #fdb44b;
+}
