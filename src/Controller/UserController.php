@@ -72,8 +72,9 @@ final class UserController extends AbstractController
                         }
                     }
                     if (!$skipAdd) {
+                        $user = new User();
                         $password = $userPasswordHasher->hashPassword($user, $data[1]);
-                        $user = $this->userRepository->save($password, true, new \DateTime('now'), $data[0]);
+                        $user = $this->userRepository->update($password, true, new \DateTime('now'), $user, $data[0]);
 
                         $this->userPasswordHistoryRepository->save($user, $data[1]);
                     }

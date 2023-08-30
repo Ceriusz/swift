@@ -42,25 +42,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->flush();
     }
 
-    public function save(string $password, bool $firstLogin, \DateTime $lastPasswordChange, string $email = ''): User
-    {
-        $user = new User();
-        $user->setPassword($password);
-        $user->setFirstLogin($firstLogin);
-        $user->setLastPasswordChange($lastPasswordChange);
-        $user->setEmail($email);
-
-        $this->getEntityManager()->persist($user);
-        $this->getEntityManager()->flush();
-
-        return $user;
-    }
-
-    public function update(string $password, bool $firstLogin, \DateTime $lastPasswordChange, User $user): User
+    public function update(string $password, bool $firstLogin, \DateTime $lastPasswordChange, User $user, string $email = ''): User
     {
         $user->setPassword($password);
         $user->setFirstLogin($firstLogin);
         $user->setLastPasswordChange($lastPasswordChange);
+        if ($email !== '') {
+            $user->setEmail($email);
+        }
 
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();
